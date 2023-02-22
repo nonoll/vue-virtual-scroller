@@ -171,6 +171,11 @@ export default {
       type: [String, Object, Array],
       default: '',
     },
+
+    itemsWithSize: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data () {
@@ -361,6 +366,7 @@ export default {
       const typeField = this.typeField
       const keyField = this.simpleArray ? null : this.keyField
       const items = this.items
+      const itemsWithSize = this.itemsWithSize
       const count = items.length
       const sizes = this.sizes
       const views = this.$_views
@@ -530,7 +536,7 @@ export default {
           if (i === items.length - 1) this.$emit('scroll-end')
           if (i === 0) this.$emit('scroll-start')
 
-          type = item[typeField]
+          type = itemsWithSize && item.item ? item.item[typeField] : item[typeField]
           unusedPool = unusedViews.get(type)
 
           if (continuous) {

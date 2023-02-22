@@ -2,6 +2,7 @@
   <RecycleScroller
     ref="scroller"
     :items="itemsWithSize"
+    :items-with-size="true"
     :min-item-size="minItemSize"
     :direction="direction"
     key-field="id"
